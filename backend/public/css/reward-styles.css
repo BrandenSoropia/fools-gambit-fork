@@ -1,0 +1,54 @@
+#reward-screen{
+	position: fixed;
+    top: 18vh;
+    background: grey;
+    width:80vw;
+    text-align: center;
+    box-shadow: 0 0px 20px 3px black;
+    z-index: 10;
+}
+#rewardScreenText{
+	margin-top: 0.4em;
+}
+.rewardCard{
+	width:auto;
+	max-height: 19vh;
+	margin:0.2em;
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.5);
+}
+#rewardCards{
+    padding: 5px;	
+    max-height: 65vh;
+    overflow-y: auto;
+}
+img.rewardCard.selectedCard{
+    box-shadow: 0 0px 15px 0 red;
+    outline: 2px double red;
+}
+
+@media only screen and (max-width: 700px) {
+	#reward-screen{
+		width:100%;
+		top: 2vh;
+	}
+	#rewardCards{
+    	max-height: 80vh;
+    	overflow-y: scroll;
+	}
+	.rewardCard{
+		width: 23%;
+		max-height: none;
+	}
+}
+@media only screen and (max-width: 450px) {
+	.rewardCard{
+		width: 30%;
+		max-height: none;
+	}
+}
+@media only screen and (max-height: 450px) {
+	#rewardCards{
+    	max-height: 63vh;
+    	overflow-y: scroll;
+	}
+}

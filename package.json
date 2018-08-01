@@ -1,0 +1,23 @@
+{
+  "name": "assignment-2-heart-of-the-cards",
+  "version": "1.0.0",
+  "description": "A browser-based Card RPG",
+  "main": "Main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csc309-18s/assignment-2-heart-of-the-cards.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csc309-18s/assignment-2-heart-of-the-cards/issues"
+  },
+  "homepage": "https://github.com/csc309-18s/assignment-2-heart-of-the-cards#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  }
+}

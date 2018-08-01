@@ -1,0 +1,19 @@
+#leaderboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+}
+
+#leaderboard h2 {
+    font-size: 2.2em;
+}
+
+#leaderboard table {
+    /* text-align: center; */
+    font-size: 2.2em;
+    border-spacing: 10px;
+    border-collapse: separate;
+    text-align: center;
+}

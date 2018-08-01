@@ -1,0 +1,253 @@
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button {
+    background-color: rgba(58, 58, 58,0.8);
+    border-radius: 6px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+    margin-top: 2%;
+    width: 8em;
+    height: 1.8em;
+    max-width: 400px;
+    max-height: 2em;
+    transform: translate(0%, -20%);
+    color: white;
+    border: solid;
+    border-width: 1px;
+}
+button:hover{
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.4), 0 6px 25px 0 rgba(0, 0, 0, 0.1);
+    background-color: rgb(180, 20, 20);
+}
+button:active {
+    background-color: rgb(127, 25, 25);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.6), 0 6px 15px 0 rgba(0, 0, 0, 0.1);
+}
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    background-color: rgb(58, 58, 58);
+}
+.mediumButton button {
+    width:10em;
+}
+.wideButton button {
+    width: 40vw;
+}
+
+#start-screen {
+    width: 100%;
+    height: 100%;
+}
+
+#start-screen .border {
+    width: 100%;
+}
+
+#start-screen-title {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#start-screen-title h1 {
+    margin: 0;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.mobile-display {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+}
+.mobile-display img {
+    height: 20vh;
+}
+
+.mobile-display img:nth-child(1) {
+    transform: translateX(-10%) rotateY(30deg) rotateX(-5deg) rotate(10deg);
+    z-index: 1;
+}
+
+.mobile-display img:nth-child(2) {
+    margin-left: 20vw;
+    transform: translateY(-30%) rotateY(30deg) rotateX(10deg) rotate(30deg);
+}
+
+.mobile-display img:nth-child(3) {
+    transform: translateY(-80%) rotate(-20deg);
+    z-index: 3;
+}
+
+.desktop-display {
+    height: 68%;
+}
+
+#hand-img {
+    transform: translateX(5%) translateY(-70%) rotateX(180deg) rotate(45deg);
+    width: 50%;
+    z-index: 4;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+    perspective: 1000px;
+}
+
+/* Ace */
+.flip-container:nth-child(1) {
+    margin-left: 70%;
+    transform: rotate(15deg);
+}
+
+/* Joker */
+.flip-container:nth-child(2) {
+    margin-left: 50%;
+    transform: rotate(15deg);
+}
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+    width: 12vw;
+    height: 24vh;
+}
+
+/* flip speed goes here */
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.flipper img {
+    width: inherit;
+    height: inherit;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
+}
+
+#game-over-screen {
+    background-color: rgba(0,0,0, .5);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100% ;
+}
+
+#game-over-screen h1 {
+    background-color: white;
+    border: 2.5vw solid;
+    border-color: orange;
+    border-radius: 5px;
+    margin: 0;
+    padding: 10%;
+}
+
+#game-over-screen {
+    text-align: center;
+}
+
+#game-over-screen img {
+  max-height: 100%;
+  max-width: auto;
+  margin-top: 15%;
+}
+
+#game-over-screen .buttons-container {
+  margin-top: 0%;
+}
+
+#game-over-screen .message {
+  margin-top: 25%;
+  font-size: 5em;
+}
+
+#game-over-screen .rounds {
+  margin-top: 5%;
+}
+
+@media only screen and (max-width: 500px) {
+    .buttons-container {
+        align-items: center;
+        flex-direction: column;
+        height: 32%;
+        justify-content: flex-end;
+    }
+
+    #hand-img {
+        transform: translateY(-100%);
+    }
+
+    .desktop-display {
+        display: none;
+    }
+
+    #start-screen button {
+    }
+
+    #start-screen-title h1 {
+        font-size: 3em;
+        text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    #start-screen-title h2 {
+        margin-top: 0;
+    }
+
+    #game-over-screen button {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 501px) {
+    .mobile-display {
+        display: none;
+    }
+
+    .desktop-display {
+        display: block;
+    }
+
+    #loggedintext {
+        margin-top:20px;
+    }
+}
+
+#loading-screen{
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/blackBG.png');
+    background-color: black;
+    z-index: 100;
+}

@@ -1,0 +1,187 @@
+.display {
+    background-image: url('../assets/background.png');
+    background-position: bottom;
+    background-size: cover;
+    background-color: darkgrey;
+    display: flex;
+    height: 50%;
+    width: 100%;
+}
+
+/* Remove ever-present margin body so everything fits right into browser */
+body {
+    background-image: url('../assets/bg3.png');
+}
+
+#game {
+    box-shadow: 0px 0px 30px rgba(0,0,0,.8);
+    background-image: url('../assets/redBG.png');
+    color: white;
+}
+
+.divider {
+    width: 10%;
+}
+
+.hp {
+    background-color: rgba(0,0,0,0.6);
+    height: 4vh;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+
+/* Displays actual hp */
+.hp .bar {
+    background-color: red;
+    z-index: 2;
+}
+
+/* Displays prev hp when damage taken */
+.hp .prev {
+    background-color: lightpink;
+    z-index: 1;
+}
+
+/* Common styles between red and pink bar */
+.hp span {
+    border-radius: inherit;
+    height: 84%;
+    left: 0;
+    top: 8%;
+    position: absolute;
+    transition: width .5s linear; /* Animate any width changes */
+}
+
+.hp .text {
+    position: relative;
+    color: white;
+    z-index: 3;
+    top: 0;
+}
+
+#game {
+    background-color: lightgrey;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.player > .status {
+    margin: auto;
+    text-align: left;
+}
+
+.player, .monster {
+    width: 50%;
+}
+
+.shield {
+    height: 5vh;
+    position: relative;
+    z-index: 2;
+}
+.monster .shield{
+    left: 0.5em;
+}
+.player .shield {
+    right: 0.5em;
+}
+
+.shield span {
+    background: url('../assets/shield.png') center center no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 1.2em;
+    padding: 7px;
+    height: 100%;
+}
+
+.sprite {
+    text-align: center;
+    transition: all 0.5s ease-out;
+}
+
+.sprite img {
+    margin: auto;
+    max-width: 40vw;
+    max-height: 35vh;
+}
+
+.state {
+    display: flex;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.status {
+    display: flex;
+    margin-top: 4%;
+}
+
+.player-physical-attack {
+    animation: player-physical-attack 0.75s 1;
+}
+
+.mob-physical-attack {
+    animation: mob-physical-attack 1s 1;
+}
+
+@media only screen and (max-width: 500px) {
+    .divider {
+        width: 5%;
+    }
+
+    .state {
+        font-size: 1.2em;
+    }
+
+    /* Mobile needs more space for status being displayed under the HP bar */
+    .status {
+        margin-top: 8%;
+    }
+
+    @keyframes player-physical-attack {
+        50%   {
+            transform: translateX(50%) rotate(40deg);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    @keyframes mob-physical-attack {
+        50%   {
+            transform: translateX(-100%) rotate(-15deg);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+}
+
+@media only screen and (min-width: 501px) {
+  @keyframes player-physical-attack {
+      50%   {
+          transform: translateX(100%) rotate(60deg);
+      }
+      100% {
+          transform: translateX(0);
+      }
+  }
+  @keyframes mob-physical-attack {
+      50%   {
+          transform: translateX(-100%) rotate(-15deg);
+      }
+      100% {
+          transform: translateX(0);
+      }
+  }
+}
+
+@media only screen and (min-width: 701px) {
+    #game {
+        margin: auto;
+        max-width: 1250px;
+        width: 80vw;
+    }
+}

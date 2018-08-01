@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fool's Gambit</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+<!--     <link rel="stylesheet" type="text/css" href="./css/jquery.ui.1.10.0.ie.css">
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui-1.10.0.custom.css"> -->
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/generic-screens-styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/battle-styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/card-styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/reward-styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/leaderboard.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<div id="game">
+    <div id="loading-screen" style="display:none;">
+        <div style="top: 40vh; position: relative;text-shadow: 1px 1px 8px red;">Loading...</div>
+    </div>
+    <div id="leaderboard" class="hidden">
+        <h2>Leaderboard</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th class="highscore">Score</th>
+                <th class="username">Name</th>
+            </tr>
+            <tr id="first-place">
+                <td>1st</td>
+                <td class="highscore"></td>
+                <td class="username"></td>
+            </tr>
+            <tr id="second-place">
+                <td>2nd</td>
+                <td class="highscore"></td>
+                <td class="username"></td>
+            </tr>
+            <tr id="third-place">
+                <td>3rd</td>
+                <td class="highscore"></td>
+                <td class="username"></td>
+            </tr>
+        </table>
+        <button>Back</button>
+    </div>
+    <div id="start-screen" class="">
+        <img class="border" src="css/images/u-icons-line-break640x320.png"/>
+        <div id="start-screen-title">
+            <h1>Fool's Gambit</h1>
+        </div>
+        <!-- Fixed cards for mobile only -->
+        <div class="mobile-display">
+            <img src="assets/ace-spades.png"/>
+            <img src="assets/redCardBack.png"/>
+            <img src="assets/redjokercard.png"/>
+            <img id="hand-img" src="assets/UndiciSmaug-joker-hand.png" alt="https://undicismaug.deviantart.com/art/Joker-Riddler-Hands-black-n-white-352575531"/>
+        </div>
+        <!-- Spinning cards for desktops only -->
+        <div class="desktop-display">
+            <div class="flip-container">
+                <div class="flipper">
+                    <div class="front">
+                        <img src="assets/ace-spades.png"/>
+                    </div>
+                    <div class="back">
+                        <img src="assets/redCardBack.png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-container">
+                <div class="flipper">
+                    <div class="front">
+                        <img src="assets/redjokercard.png"/>
+                    </div>
+                    <div class="back">
+                        <img src="assets/redCardBack.png"/>
+                    </div>
+                </div>
+            </div>
+            <img id="hand-img" src="assets/UndiciSmaug-joker-hand.png" alt="https://undicismaug.deviantart.com/art/Joker-Riddler-Hands-black-n-white-352575531"/>
+        </div>
+        <div class="buttons-container">
+            <span id="loggedintext" style="text-align: center;"></span>
+            <span id="authentication">
+                <button id="loginbtn" onclick="window.location.href='/users/login'">Login</button>
+                <button id="registerbtn" onclick="window.location.href='/users/register'">Register</button>
+            </span>
+            <span id="post-authentication" hidden>
+                <button id="continuebtn" disabled>Continue</button>
+                <button id="logoutbtn" onclick="window.location.href='/users/logout'">Logout</button>
+            </span>
+            <span>
+                <button class="start">New Game</button>
+                <button class="leaderboard">Leaderboard</button>
+            </span>
+        </div>
+        <img class="border" src="css/images/u-icons-line-break640x320.png" style="transform: rotateX(180deg)"/>
+    </div>
+    <div id="game-over-screen" class="hidden">
+        <!-- TODO: Populate message depending on loss or game completed -->
+        <h2 class="message">Game Over</h2>
+        <div id="player-image-container">
+        <img id="player-image" src="assets/redjokercard.png"/>
+      </div>
+        <div class="buttons-container">
+            <button class="start">Start</button>
+            <button class="leaderboard">Leaderboard</button>
+            <button class="mainmenu">Main Menu</button>
+        </div>
+        <div class="rounds"></div>
+    </div>
+    <div class="battle hidden">
+        <div class="display">
+            <div class="player">
+                <div class="state">
+                    <div class="hp">
+                        <span class="prev"></span>
+                        <span class="bar"></span>
+                        <span class="text"></span>
+                    </div>
+                    <div class="shield">
+                        <span>5</span>
+                    </div>
+                    <div class="status">
+                    </div>
+                </div>
+                <div class="sprite">
+                    <img src="assets/redjokerBattle.png">
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="monster">
+                <div class="state">
+                    <div class="shield">
+                        <span>5</span>
+                    </div>
+                    <div class="hp">
+                        <span class="prev"></span>
+                        <span class="bar"></span>
+                        <span class="text"></span>
+                    </div>
+                    <div class="status">
+                    </div>
+                </div>
+                <div class="sprite">
+                    <img src="assets/lobsterBeast.png">
+                </div>
+            </div>
+        </div>
+        <div class="card-display">
+            <div class="hand">
+                <ol id="drawn-cards">
+                        <img id="card-0" src="">
+                        <img id="card-1" src="">
+                        <img id="card-2" src="">
+                        <img id="card-3" src="">
+                        <img id="card-4" src="">
+                </ol>
+            </div>
+            <div class="cards-remaining">Cards Remaining: 3</div>
+            <div class="battle-actions">
+
+              <!-- <button class="view-log">View Log</button> -->
+                <button class="end-turn">End Turn</button>
+            </div>
+            <div class="piles">
+                <span class="draw-pile">
+                    <div class="draw-title">Draw</div>
+                    <div class="draw-deck">
+                        <div class="draw-deck-amount">8</div>
+                        <img class="draw-deck-BG" src="assets/cardDeckStackBG.png">
+                    </div>
+                </span>
+                <span class="discard-pile">
+                    <div class="discard-title">Discard</div>
+                    <div class="discard-deck">
+                        <div class="discard-deck-amount">8</div>
+                        <img class="discard-deck-BG" src="assets/cardDeckDiscardBG.png">
+                    </div>
+                </span>
+          </div>
+          <div id="battle-log" style="">
+              <div id="log-header" style=" ">Battle Log<span id="log-icon" class="ui-icon ui-icon-triangle-1-s"></span></div>
+              <div id="battle-log-text" style="">
+                </div>
+          </div>
+    </div>
+    <div id="reward-screen" style="display: none;">
+        <div id="rewardScreenText">Select two Cards to upgrade.</div>
+        <div>
+            <ol id="rewardCards" class="">
+            </ol>
+        </div>
+
+        <!-- <button id="rewardResetButton">Reset</button> -->
+        <button id="rewardDoneButton" disabled>Done</button>
+    </div>
+</div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.spritely/0.6.8/jquery.spritely.min.js"></script>
+<script src="http://ricostacruz.com/jquery.transit/jquery.transit.min.js"></script>
+<script src="./scripts/helpers.js"></script>
+<script src="./scripts/AuthenticationManager.js"></script>
+<script src="./scripts/BattleDisplayController.js"></script>
+<script src="./scripts/CardDisplayController.js"></script>
+<script src="./scripts/RewardDisplayController.js"></script>
+<script src="./scripts/ScreenController.js"></script>
+<script src="./scripts/Main.js"></script>
+</html>
