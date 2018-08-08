@@ -17,4 +17,9 @@ Check out soultions.md for further details!
 6. npm start or yarn start to host server that serves the app at localhost:3000 No need to login, just hit "New Game" to play!
 
 # Screenshots
-![Start screen](/screenshots/Screen Shot 2018-08-08 at 7.40.27 AM.png?raw=true "Start screen")
+Load Screen:
+![Start Screen](/screenshots/start-screen.png?raw=true "Start Screen")
+
+Gameplay:
+![Battle Gameplay](/screenshots/fools-gambit-gameplay.gif?raw=true "Battle Gameplay")
+
